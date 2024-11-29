@@ -1,16 +1,10 @@
-# wheely
+# Wheely
 
-A new Flutter project.
+Simple App for vehicle booking using Flutter 3.27.0, Clean Architecture, BLoC and GetIt 
 
-## Getting Started
+## Pubs
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [get_it](https://pub.dev/packages/get_it)
+- [equatable](https://pub.dev/packages/equatable)
+- [go_router](https://pub.dev/packages/go_router)
