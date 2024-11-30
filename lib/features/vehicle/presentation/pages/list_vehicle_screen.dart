@@ -51,15 +51,30 @@ class ListVehiclesScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10, 
-                            vertical: 5
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: WidgetStateProperty.resolveWith<double?>(
+                            (Set<WidgetState> states) {
+                              if (states.contains(WidgetState.pressed)) {
+                                return 8;
+                              }
+                              return null;
+                            }),
+                            backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                            overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                              (Set<WidgetState> states) {
+                                if (states.contains(WidgetState.hovered)) {
+                                  return Colors.grey.withValues(alpha: 0.04);
+                                }
+                                if (states.contains(WidgetState.focused) ||
+                                    states.contains(WidgetState.pressed)) {
+                                  return Colors.grey.withValues(alpha: 0.12);
+                                }
+                                return null; // Defer to the widget's default.
+                              },
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(999),
-                            color: Colors.white
-                          ),
+                          onPressed: () { },
                           child: const Row(
                             children: [
                               Text(
@@ -80,7 +95,7 @@ class ListVehiclesScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),
