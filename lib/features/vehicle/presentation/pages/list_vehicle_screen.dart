@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wheely/core/di/service_locator.dart';
 
 import 'package:wheely/features/vehicle/domain/entities/vehicle.dart';
 
@@ -74,7 +75,9 @@ class ListVehiclesScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          onPressed: () { },
+                          onPressed: () { 
+                            _refresh(context);
+                          },
                           child: const Row(
                             children: [
                               Text(
@@ -127,5 +130,11 @@ class ListVehiclesScreen extends StatelessWidget {
 
   Widget _vehiclesItem(Vehicle vehicle) {
     return VehicleCard(vehicle: vehicle);
+  }
+
+  Future<void> _refresh(BuildContext context) async {
+    Future state = context.read<VehicleBloc>().stream.first;
+    context.read<VehicleBloc>().add(RefreshGetAllVehiclesEvent());
+    await state;
   }
 }

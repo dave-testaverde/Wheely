@@ -6,3 +6,4 @@ abstract class VehicleEvent extends Equatable {
 }
 
 class GetAllVehiclesEvent extends VehicleEvent {}
+class RefreshGetAllVehiclesEvent extends VehicleEvent {}

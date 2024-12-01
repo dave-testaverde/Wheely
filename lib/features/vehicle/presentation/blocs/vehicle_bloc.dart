@@ -12,12 +12,24 @@ part 'vehicle_state.dart';
 class VehicleBloc extends Bloc<VehicleEvent, GetAllVehiclesState> {
   VehicleBloc() : super(GetAllVehiclesInitialState()) {
     on<GetAllVehiclesEvent>(getAllVehiclesEvent);
+    on<RefreshGetAllVehiclesEvent>(refreshAllVehiclesEvent);
   }
 
   FutureOr<void> getAllVehiclesEvent(
     GetAllVehiclesEvent event, 
     Emitter<GetAllVehiclesState> emit
   ) async {
+    await emitGetAllVehicles(emit);
+  }
+
+  FutureOr<void> refreshAllVehiclesEvent(
+    RefreshGetAllVehiclesEvent event, 
+    Emitter<GetAllVehiclesState> emit
+  ) async {
+    await emitGetAllVehicles(emit);
+  }
+
+  emitGetAllVehicles(Emitter<GetAllVehiclesState> emit) async {
     try {
       emit(GetAllVehiclesLoadingState());
       List<Vehicle> vehicles = await sl<GetAllVehicles>().call();
@@ -26,4 +38,5 @@ class VehicleBloc extends Bloc<VehicleEvent, GetAllVehiclesState> {
       emit(GetAllVehiclesErrorState("Something went wrong!"));
     }
   }
+
 }
