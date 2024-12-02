@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wheely/core/di/service_locator.dart';
 
 import 'package:wheely/features/vehicle/domain/entities/vehicle.dart';
 
@@ -115,7 +115,7 @@ class ListVehiclesScreen extends StatelessWidget {
                     mainAxisSpacing: 10,
                     children:
                       state.vehicles.map(
-                        (vehicles) => _vehiclesItem(vehicles)
+                        (vehicles) => _vehiclesItem(vehicles, context)
                       ).toList(),
                   ),
                 ],
@@ -128,8 +128,16 @@ class ListVehiclesScreen extends StatelessWidget {
     );
   }
 
-  Widget _vehiclesItem(Vehicle vehicle) {
-    return VehicleCard(vehicle: vehicle);
+  Widget _vehiclesItem(Vehicle vehicle, BuildContext context) {
+    //return VehicleCard(vehicle: vehicle);
+    return InkWell(
+      onTap: (){ 
+        if (kDebugMode) {
+          print("Go to details page [context.go('/vehicles/${vehicle.id}')]");
+        }
+      },
+      child: VehicleCard(vehicle: vehicle),
+    );
   }
 
   Future<void> _refresh(BuildContext context) async {

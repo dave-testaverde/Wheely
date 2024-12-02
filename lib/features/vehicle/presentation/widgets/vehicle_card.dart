@@ -5,7 +5,7 @@ import '../../domain/entities/vehicle.dart';
 class VehicleCard extends StatelessWidget {
   final Vehicle vehicle;
 
-  VehicleCard({required this.vehicle});
+  const VehicleCard({super.key, required this.vehicle});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,6 @@ class VehicleCard extends StatelessWidget {
                 ],
               ),
             ),
-            // Icona o altro elemento da aggiungere (se necessario)
             Icon(Icons.arrow_forward_ios, color: Colors.black),
           ],
         ),

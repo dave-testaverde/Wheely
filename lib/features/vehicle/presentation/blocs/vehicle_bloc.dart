@@ -38,5 +38,4 @@ class VehicleBloc extends Bloc<VehicleEvent, GetAllVehiclesState> {
       emit(GetAllVehiclesErrorState("Something went wrong!"));
     }
   }
-
 }

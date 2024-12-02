@@ -17,7 +17,7 @@ class AppRouter {
             child: const ListVehiclesScreen(),
           );
         },
-      )
+      ),
     ]);
   }
 }
