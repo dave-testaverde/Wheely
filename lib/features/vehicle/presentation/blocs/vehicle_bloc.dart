@@ -9,33 +9,44 @@ import '../../domain/usecases/get_all_vehicles.dart';
 part 'vehicle_event.dart';
 part 'vehicle_state.dart';
 
-class VehicleBloc extends Bloc<VehicleEvent, GetAllVehiclesState> {
-  VehicleBloc() : super(GetAllVehiclesInitialState()) {
+class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
+  VehicleBloc() : super(VehicleInitialState()) {
     on<GetAllVehiclesEvent>(getAllVehiclesEvent);
     on<RefreshGetAllVehiclesEvent>(refreshAllVehiclesEvent);
+
+    on<GetDetailsVehicleEvent>(getDetailsVehicleEvent);
   }
 
   FutureOr<void> getAllVehiclesEvent(
     GetAllVehiclesEvent event, 
-    Emitter<GetAllVehiclesState> emit
+    Emitter<VehicleState> emit
   ) async {
     await emitGetAllVehicles(emit);
   }
 
   FutureOr<void> refreshAllVehiclesEvent(
     RefreshGetAllVehiclesEvent event, 
-    Emitter<GetAllVehiclesState> emit
+    Emitter<VehicleState> emit
   ) async {
     await emitGetAllVehicles(emit);
   }
 
-  emitGetAllVehicles(Emitter<GetAllVehiclesState> emit) async {
+  FutureOr<void> getDetailsVehicleEvent(
+    GetDetailsVehicleEvent event, 
+    Emitter<VehicleState> emit
+  ) async {
+    emit(VehicleLoadingState());
+    emit(GetDetailsVehicleSuccessState());
+  }
+
+  emitGetAllVehicles(Emitter<VehicleState> emit) async {
     try {
-      emit(GetAllVehiclesLoadingState());
+      emit(VehicleLoadingState());
       List<Vehicle> vehicles = await sl<GetAllVehicles>().call();
       emit(GetAllVehiclesSuccessState(vehicles));
     } catch (e) {
-      emit(GetAllVehiclesErrorState("Something went wrong!"));
+      emit(VehicleErrorState("Something went wrong!"));
     }
   }
+
 }

@@ -1,15 +1,15 @@
 part of 'vehicle_bloc.dart';
 
-abstract class GetAllVehiclesState extends Equatable {
+abstract class VehicleState extends Equatable {
   @override
   List<Object> get props => [];
 }
 
-class GetAllVehiclesInitialState extends GetAllVehiclesState {}
+class VehicleInitialState extends VehicleState {}
 
-class GetAllVehiclesLoadingState extends GetAllVehiclesState {}
+class VehicleLoadingState extends VehicleState {}
 
-class GetAllVehiclesSuccessState extends GetAllVehiclesState {
+class GetAllVehiclesSuccessState extends VehicleState {
   final List<Vehicle> vehicles;
   GetAllVehiclesSuccessState(this.vehicles);
 
@@ -17,9 +17,13 @@ class GetAllVehiclesSuccessState extends GetAllVehiclesState {
   List<Object> get props => [vehicles];
 }
 
-class GetAllVehiclesErrorState extends GetAllVehiclesState {
+class GetDetailsVehicleSuccessState extends VehicleState {
+  GetDetailsVehicleSuccessState();
+}
+
+class VehicleErrorState extends VehicleState {
   final String message;
-  GetAllVehiclesErrorState(this.message);
+  VehicleErrorState(this.message);
 
   @override
   List<Object> get props => [message];

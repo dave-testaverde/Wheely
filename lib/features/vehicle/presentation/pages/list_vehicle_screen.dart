@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:wheely/features/vehicle/domain/entities/vehicle.dart';
 
@@ -12,17 +13,17 @@ class ListVehiclesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<VehicleBloc, GetAllVehiclesState>(
+    return BlocConsumer<VehicleBloc, VehicleState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is GetAllVehiclesLoadingState) {
+        if (state is VehicleLoadingState) {
           return Center(
             child: CircularProgressIndicator(
               color: Colors.yellowAccent[400]
             ),
           );
         }
-        if (state is GetAllVehiclesErrorState) {
+        if (state is VehicleErrorState) {
           return Center(
             child: Text(
               state.message,
@@ -129,11 +130,11 @@ class ListVehiclesScreen extends StatelessWidget {
   }
 
   Widget _vehiclesItem(Vehicle vehicle, BuildContext context) {
-    //return VehicleCard(vehicle: vehicle);
     return InkWell(
       onTap: (){ 
         if (kDebugMode) {
-          print("Go to details page [context.go('/vehicles/${vehicle.id}')]");
+          print("Go to details page [context.go('/vehicle/${vehicle.id}')]");
+          context.goNamed("details_vehicle", extra: vehicle);
         }
       },
       child: VehicleCard(vehicle: vehicle),
