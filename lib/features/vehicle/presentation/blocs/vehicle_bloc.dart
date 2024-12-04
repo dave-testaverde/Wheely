@@ -8,6 +8,7 @@ import '../../domain/usecases/get_all_vehicles.dart';
 
 part 'vehicle_event.dart';
 part 'vehicle_state.dart';
+part 'vehicle_emit.dart';
 
 class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
   VehicleBloc() : super(VehicleInitialState()) {
@@ -38,15 +39,4 @@ class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
     emit(VehicleLoadingState());
     emit(GetDetailsVehicleSuccessState());
   }
-
-  emitGetAllVehicles(Emitter<VehicleState> emit) async {
-    try {
-      emit(VehicleLoadingState());
-      List<Vehicle> vehicles = await sl<GetAllVehicles>().call();
-      emit(GetAllVehiclesSuccessState(vehicles));
-    } catch (e) {
-      emit(VehicleErrorState("Something went wrong!"));
-    }
-  }
-
 }

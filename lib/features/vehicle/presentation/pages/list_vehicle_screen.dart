@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:wheely/features/vehicle/domain/entities/vehicle.dart';
-
+import '../../domain/entities/vehicle.dart';
 import '../blocs/vehicle_bloc.dart';
+import '../widgets/app/app_error.dart';
+import '../widgets/app/app_loading.dart';
 import '../widgets/vehicle_card.dart';
 
 class ListVehiclesScreen extends StatelessWidget {
@@ -16,21 +17,8 @@ class ListVehiclesScreen extends StatelessWidget {
     return BlocConsumer<VehicleBloc, VehicleState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is VehicleLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.yellowAccent[400]
-            ),
-          );
-        }
-        if (state is VehicleErrorState) {
-          return Center(
-            child: Text(
-              state.message,
-              textAlign: TextAlign.center,
-            ),
-          );
-        }
+        if (state is VehicleLoadingState) { return AppLoading(); }
+        if (state is VehicleErrorState) { return AppError(message: state.message); }
         if (state is GetAllVehiclesSuccessState) {
           return Scaffold(
             body: SafeArea(
