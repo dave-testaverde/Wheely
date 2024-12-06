@@ -22,6 +22,7 @@ class ListVehiclesScreen extends StatelessWidget {
         if (state is GetAllVehiclesSuccessState) {
           return Scaffold(
             body: SafeArea(
+              bottom: false,
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
@@ -98,7 +99,7 @@ class ListVehiclesScreen extends StatelessWidget {
                         vertical: 10, 
                         horizontal: 10
                     ),
-                    childAspectRatio: 37 / 10,
+                    childAspectRatio: 38 / 10,
                     crossAxisCount: 1,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,

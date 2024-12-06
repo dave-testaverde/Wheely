@@ -38,7 +38,7 @@ class VehicleCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text('Cost: \$${vehicle.cost}'),
+                  Text('From \$${vehicle.cost}'),
                 ],
               ),
             ),
