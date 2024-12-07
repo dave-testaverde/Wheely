@@ -30,15 +30,16 @@ class VehicleCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    vehicle.model,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    margin: EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    child: Text(vehicle.model, style: TextStyle(color: Colors.white))
                   ),
-                  SizedBox(height: 8),
-                  Text('From \$${vehicle.cost}'),
+                  Text('From \$${vehicle.cost}', style: TextStyle(color: Colors.deepOrange[400], fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
