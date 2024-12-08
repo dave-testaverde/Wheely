@@ -9,6 +9,7 @@ import '../../domain/entities/vehicle.dart';
 import '../blocs/vehicle_bloc.dart';
 import '../widgets/app/app_error.dart';
 import '../widgets/app/app_loading.dart';
+import '../widgets/message.dart';
 
 class DetailsVehicleScreen extends StatelessWidget {
   final Vehicle vehicle;
@@ -102,7 +103,9 @@ class DetailsVehicleScreen extends StatelessWidget {
                                           style: ButtonStyle(
                                             backgroundColor: WidgetStateProperty.all<Color>(Colors.black)
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            MessageVehicle().showMessage(context, "Contact us for further information");
+                                          },
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment: MainAxisAlignment.center,
