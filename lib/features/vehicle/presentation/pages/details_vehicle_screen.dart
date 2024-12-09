@@ -104,7 +104,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             backgroundColor: WidgetStateProperty.all<Color>(Colors.black)
                                           ),
                                           onPressed: () {
-                                            MessageVehicle().showMessage(context, "Contact us for further information");
+                                            MessageVehicle.showMessage(context, "Contact us for further information");
                                           },
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,

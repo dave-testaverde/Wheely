@@ -2,10 +2,10 @@ import '../../domain/entities/vehicle.dart';
 
 class VehicleModel extends Vehicle {
   VehicleModel({
-    required String id,
-    required String model,
-    required String cost,
-  }) : super(id: id, model: model, cost: cost);
+    required super.id,
+    required super.model,
+    required super.cost,
+  });
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) {
     return VehicleModel(
