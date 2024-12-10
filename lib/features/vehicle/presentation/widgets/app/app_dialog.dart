@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DialogVehicle {
-  static showInfoDialog(
-    BuildContext context
-  ){
+class DialogApp {
+  final BuildContext context;
+
+  const DialogApp({
+    required this.context
+  });
+
+  showInfoDialog(){
     return baseDialog(
       context, 
       Text("Please select a time")

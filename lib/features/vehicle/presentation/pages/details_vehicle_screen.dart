@@ -7,9 +7,10 @@ import 'package:wheely/features/vehicle/presentation/widgets/app/app_back.dart';
 
 import '../../domain/entities/vehicle.dart';
 import '../blocs/vehicle_bloc.dart';
+import '../widgets/app/app_dialog.dart';
 import '../widgets/app/app_error.dart';
 import '../widgets/app/app_loading.dart';
-import '../widgets/message.dart';
+import '../widgets/app/app_message.dart';
 
 class DetailsVehicleScreen extends StatelessWidget {
   final Vehicle vehicle;
@@ -104,7 +105,12 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             backgroundColor: WidgetStateProperty.all<Color>(Colors.black)
                                           ),
                                           onPressed: () {
-                                            MessageVehicle.showMessage(context, "Contact us for further information");
+                                            MessageApp.simpleMessage(
+                                              context: context,
+                                              message: "Contact us for further information",
+                                              icon: Icon(Icons.info, color: Colors.white),
+                                              onTapIcon: () => DialogApp(context: context).showInfoDialog()
+                                            ).showMessage();
                                           },
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
