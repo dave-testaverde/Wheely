@@ -96,8 +96,8 @@ class ListVehiclesScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, 
-                        horizontal: 10
+                      vertical: 10, 
+                      horizontal: 10
                     ),
                     childAspectRatio: 38 / 10,
                     crossAxisCount: 1,
@@ -123,8 +123,8 @@ class ListVehiclesScreen extends StatelessWidget {
       onTap: (){ 
         if (kDebugMode) {
           print("Go to details page [context.go('/vehicle/${vehicle.id}')]");
-          context.goNamed("details_vehicle", extra: vehicle);
         }
+        context.goNamed("details_vehicle", extra: vehicle);
       },
       child: VehicleCard(vehicle: vehicle),
     );

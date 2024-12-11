@@ -26,11 +26,14 @@ class MessageApp {
           ),
           (icon != null) ? 
           InkWell(
-            onTap: () => onTapIcon!(),
+            onTap: () { 
+              ScaffoldMessenger.of(context).clearSnackBars();
+              onTapIcon!();
+            },
             child: icon
           ) : Container()
-        ],
-      ),
+        ]
+      )
     );
   }
 

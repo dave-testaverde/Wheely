@@ -1,16 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:wheely/features/vehicle/presentation/widgets/vehicle_list_slot.dart';
 
 class DialogApp {
   final BuildContext context;
 
-  const DialogApp({
+  static const List slots = [
+    {'label': 'From 13:30 to 14:30', 'value': 1},
+    {'label': 'From 14:30 to 15:30', 'value': 2},
+    {'label': 'From 15:30 to 16:30', 'value': 3},
+    {'label': 'Select day', 'value': 0}
+  ];
+
+  DialogApp({
     required this.context
   });
 
   showInfoDialog(){
     return baseDialog(
       context, 
-      Text("Please select a time")
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 35),
+                margin: EdgeInsets.only(left: 8),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text("Today", style: TextStyle(color: Colors.white, fontSize: 17)),
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 15.0),
+            child: ListSlotVehicle(slots: slots)
+          )
+        ],
+      )
     );
   }
 
