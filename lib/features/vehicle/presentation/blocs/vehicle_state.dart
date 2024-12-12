@@ -18,7 +18,8 @@ class GetAllVehiclesSuccessState extends VehicleState {
 }
 
 class GetDetailsVehicleSuccessState extends VehicleState {
-  GetDetailsVehicleSuccessState();
+  final Vehicle vehicle;
+  GetDetailsVehicleSuccessState(this.vehicle);
 }
 
 class VehicleErrorState extends VehicleState {

@@ -37,6 +37,6 @@ class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
     Emitter<VehicleState> emit
   ) async {
     emit(VehicleLoadingState());
-    emit(GetDetailsVehicleSuccessState());
+    emit(GetDetailsVehicleSuccessState(event.vehicle));
   }
 }

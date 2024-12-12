@@ -2,9 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ListSlotVehicle extends StatefulWidget {
-  const ListSlotVehicle({super.key, required this.slots});
+  const ListSlotVehicle({super.key, required this.slots, required this.context});
 
   final List slots;
+  final BuildContext context;
 
   @override
   State<ListSlotVehicle> createState() => _ListSlotVehicleState();
@@ -57,7 +58,9 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
             ),
-            onPressed: (){}, 
+            onPressed: (){
+              Navigator.pop(context);
+            }, 
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wheely/features/vehicle/presentation/widgets/vehicle_list_slot.dart';
+
+import '../vehicle_list_slot.dart';
 
 class DialogApp {
   final BuildContext context;
@@ -37,9 +38,9 @@ class DialogApp {
           ),
           Container(
             padding: EdgeInsets.only(top: 15.0),
-            child: ListSlotVehicle(slots: slots)
+            child: ListSlotVehicle(slots: slots, context: context)
           )
-        ],
+        ]
       )
     );
   }

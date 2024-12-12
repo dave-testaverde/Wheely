@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wheely/features/vehicle/presentation/widgets/app/app_back.dart';
 
-import '../../domain/entities/vehicle.dart';
 import '../blocs/vehicle_bloc.dart';
 import '../widgets/app/app_dialog.dart';
 import '../widgets/app/app_error.dart';
@@ -13,8 +12,7 @@ import '../widgets/app/app_loading.dart';
 import '../widgets/app/app_message.dart';
 
 class DetailsVehicleScreen extends StatelessWidget {
-  final Vehicle vehicle;
-  const DetailsVehicleScreen({super.key, required this.vehicle});
+  const DetailsVehicleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +66,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                       color: Colors.black,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    child: Text(vehicle.model, style: TextStyle(color: Colors.white))
+                                    child: Text(state.vehicle.model, style: TextStyle(color: Colors.white))
                                   )
                                 ],
                               ),
@@ -89,7 +87,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             children: [
                                               Icon(Icons.key, color: Colors.white),
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                                              Text(vehicle.id, style: TextStyle(color: Colors.white, fontSize: 13))
+                                              Text(state.vehicle.id, style: TextStyle(color: Colors.white, fontSize: 13))
                                             ]
                                           )
                                         )
@@ -143,7 +141,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                               Icon(Icons.payments, color: Colors.white),
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                                               Text("Book for ", style: TextStyle(color: Colors.white, fontSize: 16)),
-                                              Text("\$${vehicle.cost}", style: TextStyle(color: Colors.orangeAccent[400], fontWeight: FontWeight.bold, fontSize: 16))
+                                              Text("\$${state.vehicle.cost}", style: TextStyle(color: Colors.orangeAccent[400], fontWeight: FontWeight.bold, fontSize: 16))
                                             ]
                                           )
                                         )

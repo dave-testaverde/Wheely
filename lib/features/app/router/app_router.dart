@@ -17,10 +17,8 @@ class AppRouter {
           Vehicle vehicle = state.extra as Vehicle;
           return BlocProvider.value(
             value: sl<VehicleBloc>()
-              ..add(GetDetailsVehicleEvent()),
-            child: DetailsVehicleScreen(
-              vehicle: vehicle
-            ),
+              ..add(GetDetailsVehicleEvent(vehicle)),
+            child: DetailsVehicleScreen(),
           );
         },
       ),
