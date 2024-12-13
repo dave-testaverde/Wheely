@@ -66,7 +66,7 @@ class ListVehiclesScreen extends StatelessWidget {
                             ),
                           ),
                           onPressed: () { 
-                            _refresh(context);
+                            emitRefreshListVehicle(context);
                           },
                           child: const Row(
                             children: [
@@ -128,11 +128,5 @@ class ListVehiclesScreen extends StatelessWidget {
       },
       child: VehicleCard(vehicle: vehicle),
     );
-  }
-
-  Future<void> _refresh(BuildContext context) async {
-    Future state = context.read<VehicleBloc>().stream.first;
-    context.read<VehicleBloc>().add(RefreshGetAllVehiclesEvent());
-    await state;
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../blocs/vehicle_bloc.dart';
+
 class ListSlotVehicle extends StatefulWidget {
   const ListSlotVehicle({super.key, required this.slots, required this.context});
 
@@ -19,37 +21,33 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
     return Column(
       children: [
         for (var item in widget.slots)
-          Container(
-            padding: EdgeInsets.only(left: 20.0),
-            decoration: BoxDecoration(
-              color: (slot > -1 && slot == item['value']) ? Colors.black : Colors.transparent,
-              borderRadius: BorderRadius.circular(20)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    (item['label']), 
-                    style: TextStyle(
-                      color: (slot > -1 && slot == item['value']) ? Colors.white : Colors.black
+          InkWell(
+            onTap: () => setSlotSelection(item['value']),
+            child: Container(
+              padding: EdgeInsets.only(left: 20.0),
+              decoration: BoxDecoration(
+                color: (slot > -1 && slot == item['value']) ? Colors.black : Colors.transparent,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      (item['label']), 
+                      style: TextStyle(
+                        color: (slot > -1 && slot == item['value']) ? Colors.white : Colors.black
+                      )
                     )
+                  ),
+                  Radio(
+                    activeColor: Colors.yellow[400],
+                    value: item['value'],
+                    groupValue: slot,
+                    onChanged: (value) => setSlotSelection(value)
                   )
-                ),
-                Radio(
-                  activeColor: Colors.yellow[400],
-                  value: item['value'],
-                  groupValue: slot,
-                  onChanged: (value) {
-                    setState(() {
-                      slot = value!;
-                      if (kDebugMode) {
-                        print(slot);
-                      }
-                    });
-                  }
-                )
-              ]
+                ]
+              )
             )
           ),
         Container(
@@ -59,6 +57,9 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
               backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
             ),
             onPressed: (){
+              if(slot > 0) {
+                emitNewVehicleDetails(widget.context);
+              }
               Navigator.pop(context);
             }, 
             child: Row(
@@ -74,6 +75,15 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
         )
       ]
     );
+  }
+
+  setSlotSelection(int value){
+    setState(() {
+      slot = value;
+      if (kDebugMode) {
+        print(slot);
+      }
+    });
   }
 
 }

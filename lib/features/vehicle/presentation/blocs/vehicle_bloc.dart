@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wheely/core/di/service_locator.dart';
 
@@ -8,6 +9,7 @@ import '../../domain/usecases/get_all_vehicles.dart';
 
 part 'vehicle_event.dart';
 part 'vehicle_state.dart';
+part 'vehicle_sync.dart';
 part 'vehicle_emit.dart';
 
 class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
