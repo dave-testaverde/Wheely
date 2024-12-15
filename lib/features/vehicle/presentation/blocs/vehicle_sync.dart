@@ -9,7 +9,16 @@ Future<void> emitRefreshListVehicle(BuildContext context) async {
 Future<void> emitNewVehicleDetails(BuildContext context) async {
   Future state = context.read<VehicleBloc>().stream.first;
   context.read<VehicleBloc>().add(
-    GetDetailsVehicleEvent(Vehicle(id: "123445", model: "Model Mock", cost: "123,45"))
+    GetDetailsVehicleEvent(
+      Cart(
+        id: Uuid().v4(),
+        slotFrom: "12:30",
+        slotTo: "13:30",
+        slotLabel: "from 12:30 to 13:30",
+        cost: "123,45",
+        vehicle: Vehicle(id: "123445", model: "Model Mock", cost: "123,45")
+      )
+    )
   );
   await state;
 }

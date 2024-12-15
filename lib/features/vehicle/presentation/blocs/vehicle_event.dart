@@ -8,7 +8,7 @@ abstract class VehicleEvent extends Equatable {
 class GetAllVehiclesEvent extends VehicleEvent {}
 class RefreshGetAllVehiclesEvent extends VehicleEvent {}
 class GetDetailsVehicleEvent extends VehicleEvent {
-  final Vehicle vehicle;
+  final Cart cart;
 
-  GetDetailsVehicleEvent(this.vehicle);
+  GetDetailsVehicleEvent(this.cart);
 }

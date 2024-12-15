@@ -66,7 +66,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                       color: Colors.black,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    child: Text(state.vehicle.model, style: TextStyle(color: Colors.white))
+                                    child: Text(state.cart.vehicle.model, style: TextStyle(color: Colors.white))
                                   )
                                 ],
                               ),
@@ -87,7 +87,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             children: [
                                               Icon(Icons.key, color: Colors.white),
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                                              Text(state.vehicle.id, style: TextStyle(color: Colors.white, fontSize: 13))
+                                              Text(state.cart.vehicle.id, style: TextStyle(color: Colors.white, fontSize: 13))
                                             ]
                                           )
                                         )
@@ -118,7 +118,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                                               Text("Available", style: TextStyle(color: Colors.white, fontSize: 16)),
                                               Text(" today ", style: TextStyle(color: Colors.orangeAccent[400], fontSize: 16, fontWeight: FontWeight.bold)),
-                                              Text("from 12:30 to 13:30", style: TextStyle(color: Colors.white, fontSize: 16))
+                                              Text(state.cart.slotLabel, style: TextStyle(color: Colors.white, fontSize: 16))
                                             ]
                                           )
                                         )
@@ -141,7 +141,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                               Icon(Icons.payments, color: Colors.white),
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                                               Text("Book for ", style: TextStyle(color: Colors.white, fontSize: 16)),
-                                              Text("\$${state.vehicle.cost}", style: TextStyle(color: Colors.orangeAccent[400], fontWeight: FontWeight.bold, fontSize: 16))
+                                              Text("\$${state.cart.cost}", style: TextStyle(color: Colors.orangeAccent[400], fontWeight: FontWeight.bold, fontSize: 16))
                                             ]
                                           )
                                         )

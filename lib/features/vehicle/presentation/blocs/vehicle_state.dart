@@ -18,8 +18,8 @@ class GetAllVehiclesSuccessState extends VehicleState {
 }
 
 class GetDetailsVehicleSuccessState extends VehicleState {
-  final Vehicle vehicle;
-  GetDetailsVehicleSuccessState(this.vehicle);
+  final Cart cart;
+  GetDetailsVehicleSuccessState(this.cart);
 }
 
 class VehicleErrorState extends VehicleState {
