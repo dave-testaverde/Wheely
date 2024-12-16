@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wheely/features/vehicle/presentation/widgets/app/app_back.dart';
 
 import '../blocs/vehicle_bloc.dart';
-import '../widgets/app/app_dialog.dart';
+import '../widgets/dialog/base_dialog.dart';
 import '../widgets/app/app_error.dart';
 import '../widgets/app/app_loading.dart';
 import '../widgets/app/app_message.dart';
@@ -107,7 +107,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                               context: context,
                                               message: "Contact us for further information",
                                               icon: Icon(Icons.info, color: Colors.white),
-                                              onTapIcon: () => DialogApp(context: context).showInfoDialog()
+                                              onTapIcon: () => DialogApp.selectSlotTime(context: context, state: state).showInfoDialog()
                                             ).showMessage();
                                           },
                                           child: Row(

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:wheely/features/vehicle/presentation/blocs/vehicle_bloc.dart';
 
-import '../vehicle_list_slot.dart';
+import 'partial/vehicle_list_slot.dart';
 
 class DialogApp {
   final BuildContext context;
+  final GetDetailsVehicleSuccessState state;
 
-  static const List slots = [
+  static const List<Map<String, dynamic>> slots = [
     {'label': 'From 13:30 to 14:30', 'value': 1},
     {'label': 'From 14:30 to 15:30', 'value': 2},
     {'label': 'From 15:30 to 16:30', 'value': 3},
     {'label': 'Select day', 'value': 0}
   ];
 
-  DialogApp({
-    required this.context
+  DialogApp.selectSlotTime({
+    required this.context,
+    required this.state
   });
 
   showInfoDialog(){
@@ -38,7 +41,7 @@ class DialogApp {
           ),
           Container(
             padding: EdgeInsets.only(top: 15.0),
-            child: ListSlotVehicle(slots: slots, context: context)
+            child: ListSlotVehicle(slots: slots, context: context, state: state)
           )
         ]
       )

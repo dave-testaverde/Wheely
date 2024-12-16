@@ -1,13 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../blocs/vehicle_bloc.dart';
+import '../../../blocs/vehicle_bloc.dart';
 
 class ListSlotVehicle extends StatefulWidget {
-  const ListSlotVehicle({super.key, required this.slots, required this.context});
+  const ListSlotVehicle({super.key, required this.slots, required this.context, required this.state});
 
-  final List slots;
+  final List<Map<String, dynamic>> slots;
   final BuildContext context;
+  final GetDetailsVehicleSuccessState state;
+
+  final String slotSelected = "";
 
   @override
   State<ListSlotVehicle> createState() => _ListSlotVehicleState();
@@ -58,7 +61,14 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
             ),
             onPressed: (){
               if(slot > 0) {
-                emitNewVehicleDetails(widget.context);
+                emitNewVehicleDetails(
+                  widget, 
+                  widget.slots.firstWhere((e) => e['value'] == slot)
+                );
+              } else {
+                if (kDebugMode) {
+                  print("Choose day and slot");
+                }
               }
               Navigator.pop(context);
             }, 
