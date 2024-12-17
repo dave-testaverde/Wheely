@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wheely/features/vehicle/presentation/blocs/vehicle_bloc.dart';
 
+import '../../blocs/vehicle_bloc.dart';
 import 'partial/vehicle_list_slot.dart';
 
 class DialogApp {
@@ -8,9 +8,9 @@ class DialogApp {
   final GetDetailsVehicleSuccessState state;
 
   static const List<Map<String, dynamic>> slots = [
-    {'label': 'From 13:30 to 14:30', 'value': 1},
-    {'label': 'From 14:30 to 15:30', 'value': 2},
-    {'label': 'From 15:30 to 16:30', 'value': 3},
+    {'value': 1, 'from': '13:30' , 'to' : '14:30'},
+    {'value': 2, 'from': '14:30' , 'to' : '15:30'},
+    {'value': 3, 'from': '15:30' , 'to' : '16:30'},
     {'label': 'Select day', 'value': 0}
   ];
 

@@ -7,17 +7,17 @@ Future<void> emitRefreshListVehicle(BuildContext context) async {
 }
 
 Future<void> emitNewVehicleDetails(
-  ListSlotVehicle widget, Map<String, 
-  dynamic> newState
+  ListSlotVehicle widget, 
+  Map<String, dynamic> newState
 ) async {
   Future state = widget.context.read<VehicleBloc>().stream.first;
   widget.context.read<VehicleBloc>().add(
     GetDetailsVehicleEvent(
       Cart(
         id: Uuid().v4(),
-        slotFrom: "12:30",
-        slotTo: "13:30",
-        slotLabel: newState['label']!,
+        slotFrom: newState['from'],
+        slotTo: newState['to'],
+        slotLabel: "From ${newState['from']} to ${newState['to']}",
         cost: widget.state.cart.vehicle.cost,
         vehicle: widget.state.cart.vehicle
       )

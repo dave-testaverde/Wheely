@@ -106,7 +106,7 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             MessageApp.simpleMessage(
                                               context: context,
                                               message: "Contact us for further information",
-                                              icon: Icon(Icons.info, color: Colors.white),
+                                              icon: Icon(Icons.info, color: const Color.fromRGBO(255, 255, 255, 1)),
                                               onTapIcon: () => DialogApp.selectSlotTime(context: context, state: state).showInfoDialog()
                                             ).showMessage();
                                           },

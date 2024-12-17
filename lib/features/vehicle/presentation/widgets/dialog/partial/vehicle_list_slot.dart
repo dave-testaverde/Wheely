@@ -37,7 +37,7 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
                 children: [
                   Expanded(
                     child: Text(
-                      (item['label']), 
+                      (item.containsKey('label')) ? item['label'] : "From ${item['from']} to ${item['to']}", 
                       style: TextStyle(
                         color: (slot > -1 && slot == item['value']) ? Colors.white : Colors.black
                       )
