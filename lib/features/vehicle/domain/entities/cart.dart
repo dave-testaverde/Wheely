@@ -4,6 +4,10 @@ class Cart {
   final String id;
   final Vehicle vehicle;
 
+  final String date;
+
+  final String dateLabel;
+
   final String slotFrom;
   final String slotTo;
 
@@ -11,7 +15,9 @@ class Cart {
 
   final String cost;  
 
-  Cart({required this.slotLabel, 
+  Cart({required this.date,
+        required this.dateLabel,
+        required this.slotLabel, 
         required this.slotFrom, 
         required this.slotTo, 
         required this.cost, 

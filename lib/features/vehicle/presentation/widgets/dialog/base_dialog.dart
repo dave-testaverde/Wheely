@@ -8,9 +8,9 @@ class DialogApp {
   final GetDetailsVehicleSuccessState state;
 
   static const List<Map<String, dynamic>> slots = [
-    {'value': 1, 'from': '13:30' , 'to' : '14:30'},
-    {'value': 2, 'from': '14:30' , 'to' : '15:30'},
-    {'value': 3, 'from': '15:30' , 'to' : '16:30'},
+    {'value': 1, 'from': '13:30', 'to' : '14:30'},
+    {'value': 2, 'from': '14:30', 'to' : '15:30'},
+    {'value': 3, 'from': '15:30', 'to' : '16:30'},
     {'label': 'Select day', 'value': 0}
   ];
 
@@ -35,7 +35,10 @@ class DialogApp {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Text("Today", style: TextStyle(color: Colors.white, fontSize: 17)),
+                child: Text(
+                  state.cart.date, 
+                  style: TextStyle(color: Colors.white, fontSize: 17)
+                ),
               ),
             ],
           ),

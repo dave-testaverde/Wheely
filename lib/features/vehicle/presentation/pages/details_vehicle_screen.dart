@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:wheely/features/vehicle/presentation/widgets/app/app_back.dart';
 
 import '../blocs/vehicle_bloc.dart';
@@ -116,9 +117,20 @@ class DetailsVehicleScreen extends StatelessWidget {
                                             children: [
                                               Icon(Icons.payments, color: Colors.white),
                                               Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                                              Text("Available", style: TextStyle(color: Colors.white, fontSize: 16)),
-                                              Text(" today ", style: TextStyle(color: Colors.orangeAccent[400], fontSize: 16, fontWeight: FontWeight.bold)),
-                                              Text(state.cart.slotLabel, style: TextStyle(color: Colors.white, fontSize: 16))
+                                              Text("Available", style: TextStyle(color: Colors.white, fontSize: 14)),
+                                              Text(
+                                                " ${
+                                                  (
+                                                    DateUtils.isSameDay(
+                                                      DateFormat("dd-MM-yyyy").parse(state.cart.date), 
+                                                      DateFormat("dd-MM-yyyy").parse(DateTime.now().toString())
+                                                    )
+                                                    ? "Today" : state.cart.dateLabel
+                                                  )
+                                                } ",
+                                                style: TextStyle(color: Colors.orangeAccent[400], fontSize: 14, fontWeight: FontWeight.bold)
+                                              ),
+                                              Text(state.cart.slotLabel, style: TextStyle(color: Colors.white, fontSize: 14))
                                             ]
                                           )
                                         )

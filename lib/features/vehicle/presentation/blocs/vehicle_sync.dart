@@ -15,6 +15,8 @@ Future<void> emitNewVehicleDetails(
     GetDetailsVehicleEvent(
       Cart(
         id: Uuid().v4(),
+        date: widget.state.cart.date,
+        dateLabel: widget.state.cart.dateLabel,
         slotFrom: newState['from'],
         slotTo: newState['to'],
         slotLabel: "From ${newState['from']} to ${newState['to']}",
