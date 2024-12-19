@@ -36,7 +36,7 @@ class DialogApp {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  state.cart.date, 
+                  state.cart.dateLabel, 
                   style: TextStyle(color: Colors.white, fontSize: 17)
                 ),
               ),
