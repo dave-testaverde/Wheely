@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 
-class PlannerVehicle extends StatefulWidget {
-  const PlannerVehicle({super.key, required this.context});
+import '../../../blocs/vehicle_bloc.dart';
+import '../../picker.dart';
 
-  final BuildContext context;
+class Planner {
 
-  @override
-  State<PlannerVehicle> createState() => _PlannerVehicleState();
-}
-
-class _PlannerVehicleState extends State<PlannerVehicle> {
-
-  @override
-  Widget build(BuildContext context) {
+  static Widget build(
+    BuildContext context, 
+    GetDetailsVehicleSuccessState state,
+    Widget? widget
+  ) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -63,18 +60,8 @@ class _PlannerVehicleState extends State<PlannerVehicle> {
               ]
             )
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: const Text('Select a day'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.amberAccent[400]
-            ),
-            width: 70,
-            height: 20,
-          )
+          VehiclePicker(context: context, state: state),
+          (widget != null) ? widget : Container() 
         ]
       )
     );

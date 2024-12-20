@@ -27,3 +27,26 @@ Future<void> emitNewVehicleDetails(
   );
   await state;
 }
+
+Future<void> emitNewVehicleDetailss(
+  Cart cart, 
+  BuildContext context,
+  Map<String, dynamic> newState
+) async {
+  Future state = context.read<VehicleBloc>().stream.first;
+  context.read<VehicleBloc>().add(
+    GetDetailsVehicleEvent(
+      Cart(
+        id: Uuid().v4(),
+        date: cart.date,
+        dateLabel: cart.dateLabel,
+        slotFrom: newState['from'],
+        slotTo: newState['to'],
+        slotLabel: "From ${newState['from']} to ${newState['to']}",
+        cost: cart.vehicle.cost,
+        vehicle: cart.vehicle
+      )
+    )
+  );
+  await state;
+}

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:wheely/features/vehicle/presentation/widgets/modal/base_modal.dart';
 
 import '../../../blocs/vehicle_bloc.dart';
+import '../../modal/base_modal.dart';
 
 class ListSlotVehicle extends StatefulWidget {
   const ListSlotVehicle({super.key, required this.slots, required this.context, required this.state});
@@ -71,7 +71,7 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
                 if (kDebugMode) {
                   print("Choose day and slot");
                 }
-                ModalApp.planner(context: context, state: widget.state).showPlanner();
+                ModalApp.planner(context: widget.context, state: widget.state).showPlanner(null);
               }
             }, 
             child: Row(

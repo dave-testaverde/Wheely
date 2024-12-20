@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:wheely/features/vehicle/presentation/widgets/app/app_back.dart';
 
 import '../blocs/vehicle_bloc.dart';
@@ -122,8 +121,8 @@ class DetailsVehicleScreen extends StatelessWidget {
                                                 " ${
                                                   (
                                                     DateUtils.isSameDay(
-                                                      DateFormat("dd-MM-yyyy").parse(state.cart.date), 
-                                                      DateFormat("dd-MM-yyyy").parse(DateTime.now().toString())
+                                                      state.cart.date,
+                                                      DateTime.now()
                                                     )
                                                     ? "Today" : state.cart.dateLabel
                                                   )

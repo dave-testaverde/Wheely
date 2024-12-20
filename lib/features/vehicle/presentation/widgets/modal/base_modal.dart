@@ -12,26 +12,28 @@ class ModalApp {
     required this.state
   });
 
-  showPlanner(){
+  showPlanner(Widget? widget){
     return baseModal(
       context,
       Container(
-        height: 200,
+        padding: EdgeInsets.symmetric(vertical: 30.0),
         color: Colors.white,
-        child: PlannerVehicle(context: context),
+        child: Planner.build(context, state, widget)
       )
     );
   }
 
-  static baseModal(
+  baseModal(
     BuildContext context, 
     Widget widget
   ){
-    return showModalBottomSheet<void>(
+    return showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
       builder: (BuildContext context) {
-        return Container(
-          child: widget,
+        return SingleChildScrollView(
+          child: widget
         );
       }
     );

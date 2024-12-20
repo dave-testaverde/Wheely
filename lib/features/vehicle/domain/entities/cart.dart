@@ -4,9 +4,8 @@ class Cart {
   final String id;
   final Vehicle vehicle;
 
-  final String date;
-
-  final String dateLabel;
+  DateTime date;
+  String dateLabel;
 
   final String slotFrom;
   final String slotTo;

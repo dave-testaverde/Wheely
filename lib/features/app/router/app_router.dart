@@ -24,7 +24,7 @@ class AppRouter {
               ..add(GetDetailsVehicleEvent(
                 Cart(
                   id: Uuid().v4(),
-                  date: now.toString(),
+                  date: now,
                   dateLabel: DateFormat("dd-MM-yyyy").format(now),
                   slotFrom: "12:30",
                   slotTo: "13:30",
