@@ -2,13 +2,11 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uuid/uuid.dart';
 import 'package:wheely/core/di/service_locator.dart';
 
 import '../../domain/entities/cart.dart';
 import '../../domain/entities/vehicle.dart';
 import '../../domain/usecases/get_all_vehicles.dart';
-import '../widgets/dialog/partial/vehicle_list_slot.dart';
 
 part 'vehicle_event.dart';
 part 'vehicle_state.dart';

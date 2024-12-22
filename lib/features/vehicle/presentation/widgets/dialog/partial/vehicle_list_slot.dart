@@ -1,15 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
+import '../../../../domain/entities/cart.dart';
 import '../../../blocs/vehicle_bloc.dart';
 import '../../modal/base_modal.dart';
 
 class ListSlotVehicle extends StatefulWidget {
   const ListSlotVehicle({super.key, required this.slots, required this.context, required this.state});
 
+  final GetDetailsVehicleSuccessState state;
   final List<Map<String, dynamic>> slots;
   final BuildContext context;
-  final GetDetailsVehicleSuccessState state;
 
   final String slotSelected = "";
 
@@ -63,9 +66,19 @@ class _ListSlotVehicleState extends State<ListSlotVehicle> {
             onPressed: (){
               Navigator.pop(context);
               if(slot > 0) {
+                Map<String, dynamic> newState = widget.slots.firstWhere((e) => e['value'] == slot);
                 emitNewVehicleDetails(
-                  widget, 
-                  widget.slots.firstWhere((e) => e['value'] == slot)
+                  widget.context,
+                  Cart(
+                    id: Uuid().v4(),
+                    date: newState['date'],
+                    dateLabel: DateFormat("dd-MM-yyyy").format(newState['date']),
+                    slotFrom: newState['from'],
+                    slotTo: newState['to'],
+                    slotLabel: "From ${newState['from']} to ${newState['to']}",
+                    cost: widget.state.cart.vehicle.cost,
+                    vehicle: widget.state.cart.vehicle
+                  )
                 );
               } else {
                 if (kDebugMode) {

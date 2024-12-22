@@ -7,10 +7,10 @@ class DialogApp {
   final BuildContext context;
   final GetDetailsVehicleSuccessState state;
 
-  static const List<Map<String, dynamic>> slots = [
-    {'value': 1, 'from': '13:30', 'to' : '14:30'},
-    {'value': 2, 'from': '14:30', 'to' : '15:30'},
-    {'value': 3, 'from': '15:30', 'to' : '16:30'},
+  static List<Map<String, dynamic>> slots = [
+    {'value': 1, 'from': '13:30', 'to' : '14:30', 'date' : DateTime.now() },
+    {'value': 2, 'from': '14:30', 'to' : '15:30', 'date' : DateTime.now() },
+    {'value': 3, 'from': '15:30', 'to' : '16:30', 'date' : DateTime.now() },
     {'label': 'Select day', 'value': 0}
   ];
 

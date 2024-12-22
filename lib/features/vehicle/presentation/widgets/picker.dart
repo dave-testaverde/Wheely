@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:wheely/features/vehicle/presentation/widgets/modal/base_modal.dart';
 
+import '../../domain/entities/cart.dart';
 import '../blocs/vehicle_bloc.dart';
 import 'dialog/base_dialog.dart';
 import 'dialog/partial/vehicle_list_slot.dart';
@@ -66,8 +67,6 @@ class _VehiclePickerState extends State<VehiclePicker> with RestorationMixin {
       if (kDebugMode) {
         print('Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}');
       }
-      widget.state.cart.date = newSelectedDate;
-      widget.state.cart.dateLabel = DateFormat("dd-MM-yyyy").format(newSelectedDate);
       Navigator.pop(context);
       ModalApp
         .planner(context: context, state: widget.state)
@@ -82,6 +81,19 @@ class _VehiclePickerState extends State<VehiclePicker> with RestorationMixin {
           )
         );
     }
+  }
+
+  Cart updateCart(Cart cart, DateTime newSelectedDate){
+    return Cart(
+      id: cart.id,
+      date: newSelectedDate,
+      dateLabel: DateFormat("dd-MM-yyyy").format(newSelectedDate),
+      slotFrom: cart.slotFrom,
+      slotTo: cart.slotTo,
+      slotLabel: cart.slotLabel,
+      cost: cart.cost,
+      vehicle: cart.vehicle
+    );
   }
 
   @override
