@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wheely/features/app/factory.dart';
 
 import '../../blocs/vehicle_bloc.dart';
 import 'partial/vehicle_list_slot.dart';
@@ -6,13 +7,6 @@ import 'partial/vehicle_list_slot.dart';
 class DialogApp {
   final BuildContext context;
   final GetDetailsVehicleSuccessState state;
-
-  static List<Map<String, dynamic>> slots = [
-    {'value': 1, 'from': '13:30', 'to' : '14:30', 'date' : DateTime.now() },
-    {'value': 2, 'from': '14:30', 'to' : '15:30', 'date' : DateTime.now() },
-    {'value': 3, 'from': '15:30', 'to' : '16:30', 'date' : DateTime.now() },
-    {'label': 'Select day', 'value': 0}
-  ];
 
   DialogApp.selectSlotTime({
     required this.context,
@@ -44,7 +38,11 @@ class DialogApp {
           ),
           Container(
             padding: EdgeInsets.only(top: 15.0),
-            child: ListSlotVehicle(slots: slots, context: context, state: state)
+            child: ListSlotVehicle(
+              slots: AppFactory.slots, 
+              context: context, 
+              state: state
+            )
           )
         ]
       )

@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:wheely/features/vehicle/presentation/widgets/modal/base_modal.dart';
 
+import '../../../app/factory.dart';
 import '../../domain/entities/cart.dart';
 import '../blocs/vehicle_bloc.dart';
-import 'dialog/base_dialog.dart';
 import 'dialog/partial/vehicle_list_slot.dart';
+import 'modal/base_modal.dart';
 
 class VehiclePicker extends StatefulWidget {
   const VehiclePicker({super.key, this.restorationId, required this.context, required this.state});
@@ -74,7 +74,14 @@ class _VehiclePickerState extends State<VehiclePicker> with RestorationMixin {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
             child: ListSlotVehicle(
-              slots: DialogApp.slots, 
+              slots: [
+                ...AppFactory.slots.map(
+                  (Map<String, dynamic> e) { 
+                    if(e.containsKey('date')) { e['date'] = _selectedDate.value; }
+                    return e; 
+                  }
+                )
+              ],
               context: widget.context, 
               state: widget.state
             )
