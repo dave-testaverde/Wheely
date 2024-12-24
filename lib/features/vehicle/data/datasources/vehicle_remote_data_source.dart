@@ -1,7 +1,8 @@
+import 'package:dio/dio.dart';
+
 import '../../../../core/shared/constants.dart';
 import '../models/vehicle_model.dart';
 
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 abstract class VehicleRemoteDataSource {
@@ -11,20 +12,23 @@ abstract class VehicleRemoteDataSource {
 
 class VehicleRemoteDataSourceImpl implements VehicleRemoteDataSource {
   final http.Client client;
-
-  VehicleRemoteDataSourceImpl(this.client);
+  final Dio dio;
+  
+  VehicleRemoteDataSourceImpl(this.client, this.dio);
 
   @override
   Future<VehicleModel> getVehicleById(String id) async {
-    final response = await client.get(
+    final response = await dio.get(
       Uri.https(
         Constants.apiBaseUrl, 
         Constants.apiVehicleGetSingle+id
-      ),
-      headers: {"x-api-key": Constants.apiKey}
+      ).toString(),
+      options: Options(
+        headers: {"x-api-key": Constants.apiKey}
+      )
     );
     if (response.statusCode == 200) {
-      return VehicleModel.fromJson(json.decode(response.body));
+      return VehicleModel.fromJson(response.data);
     } else {
       throw Exception("Failed to load vehicle");
     }
@@ -32,17 +36,20 @@ class VehicleRemoteDataSourceImpl implements VehicleRemoteDataSource {
 
   @override
   Future<List<VehicleModel>> getAllVehicles() async {
-    final response = await client.get(
+    final response = await dio.get(
       Uri.https(
         Constants.apiBaseUrl, 
         Constants.apiVehicleGetAll
+      ).toString(),
+      options: Options(
+        headers: {"x-api-key": Constants.apiKey},
+        contentType: Headers.jsonContentType
       ),
-      headers: {"x-api-key": Constants.apiKey}
     );
     if (response.statusCode == 200) {
-      return (json.decode(response.body) as List)
+      return (response.data as List)
           .map((json) => VehicleModel.fromJson(json))
-          .toList();
+          .toList();    
     } else {
       throw Exception("Failed to load vehicles");
     }

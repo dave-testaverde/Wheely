@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:wheely/features/vehicle/domain/usecases/get_all_vehicles.dart';
@@ -25,9 +26,10 @@ init() async {
 
   // Data sources
   sl.registerLazySingleton<VehicleRemoteDataSource>(
-    () => VehicleRemoteDataSourceImpl(sl()),
+    () => VehicleRemoteDataSourceImpl(sl(), sl()),
   );
 
   // External
   sl.registerLazySingleton(() => http.Client());
+  sl.registerLazySingleton(() => Dio());
 }
